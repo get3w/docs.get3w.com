@@ -1,0 +1,50 @@
+.docs-section h1,
+.docs-section h2,
+.docs-section h3 {
+  line-height: 2rem;
+  padding: 7px 0;
+  margin: 10px 0;
+  border-bottom: solid 1px #f1f1f1; }
+  .docs-section h1 .links,
+  .docs-section h2 .links,
+  .docs-section h3 .links {
+    opacity: 0; }
+  .docs-section h1:hover,
+  .docs-section h2:hover,
+  .docs-section h3:hover {
+    color: green; }
+    .docs-section h1:hover .links,
+    .docs-section h2:hover .links,
+    .docs-section h3:hover .links {
+      opacity: 1; }
+.docs-section h1 {
+  font-size: 1.6rem; }
+.docs-section h2 {
+  font-size: 1.4rem; }
+.docs-section h3 {
+  font-size: 1.3rem; }
+.docs-section h4 {
+  font-size: 1.2rem; }
+.docs-section .ct-alert > .inner {
+  position: relative; }
+  .docs-section .ct-alert > .inner i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -15px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px; }
+  .docs-section .ct-alert > .inner .content {
+    padding-left: 50px; }
+.docs-section code.option, .docs-section th .option, .docs-section code.filter, .docs-section th .filter {
+  color: #50b600; }
+.docs-section code.flag, .docs-section th .flag, .docs-section code.output, .docs-section th .output {
+  color: #049dce; }
+
+.ct-table-wrapper p {
+  margin: 0 !important;
+  line-height: inherit; }
