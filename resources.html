@@ -78,7 +78,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/structure.html" class="active">
+    <a href="http://get3w.github.io/docs.get3w.com/structure.html">
       <span>目录结构</span>
     </a>
   </li>
@@ -198,7 +198,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/resources.html">
+    <a href="http://get3w.github.io/docs.get3w.com/resources.html" class="active">
       <span>相关资源</span>
     </a>
   </li>
@@ -228,175 +228,68 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>目录结构</h1>
+                            <h1>相关资源</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>get3w 的核心其实是一个文本转换引擎。它的概念其实就是：你用你最喜欢的标记语言来写文章，可以是 Markdown, 也可以是 Textile, 或者就是简单的 HTML, 然后 get3w 就会帮你套入一个或一系列的布局中。在整个过程中你可以设置 URL 路径，你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。</p>
+                            <p>随着 Jekyll 被更广泛的使用，一系列的教程、框架、扩展、示例和其他各种有用的资源也相继出现。下面列出了一些最流行的
+Jekyll 资源合辑的链接。</p>
 
-<p>一个基本的 get3w 网站的目录结构一般是像这样的：</p>
+<h3>Jekyll 提示和技巧，以及示例</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">.
-├── _config.yml
-├── _drafts
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── _includes
-|   ├── footer.html
-|   └── header.html
-├── _layouts
-|   ├── default.html
-|   └── post.html
-├── _posts
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-├── _site
-├── .jekyll-metadata
-└── index.html</code></pre></figure>
+<ul>
+<li><a href="https://gist.github.com/2890453">与 GitHub Pages 集成的技巧</a></li>
+</ul>
 
-<p>来看看这些都有什么用：</p>
+<p>重用代码并保持文档同步至最新的示例。</p>
 
-<div class="ct-table-wrapper ct-border --all">
-<table class="ct-striped">
-  <thead>
-    <tr>
-      <th>文件 / 目录</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <p><code>_config.yml</code></p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li><p><a href="http://getsimpleform.com/">使用 Simple Form 来集成一个简单的联系表单</a></p></li>
+<li><p><a href="http://jekyllbootstrap.com">JekyllBootstrap.com</a></p></li>
+</ul>
 
-          保存<a href="../configuration/">配置</a>数据。很多配置选项都可以直接在命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
+<p>提供了详细的解释，例子和辅助代码让大家上手 Jekyll 变得更容易。</p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_drafts</code></p>
-      </td>
-      <td>
-        <p>
+<h3>教程</h3>
 
-          drafts（草稿）是未发布的文章。这些文件的格式中都没有 <code>title.MARKUP</code> 数据。学习如何 <a href="../drafts/">使用草稿</a>.
+<h4>集成 Jekyll 和 Git</h4>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_includes</code></p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li><a href="http://metajack.im/2009/01/23/blogging-with-git-emacs-and-jekyll/">使用 Git、 Emacs 和 Jekyll 写博客</a></li>
+</ul>
 
-          你可以加载这些包含部分到你的布局或者文章中以方便重用。可以用这个标签
-          <code>{% include file.ext %}</code>
-          来把文件 <code>_includes/file.ext</code> 包含进来。
+<h4>其他技巧</h4>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_layouts</code></p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li><p><a href="http://www.justkez.com/integrating-twitter-with-jekyll/">集成 Twitter 和 Jekyll</a></p>
 
-          layouts（布局）是包裹在文章外部的模板。布局可以在 <a href="../frontmatter/">YAML 头信息</a>中根据不同文章进行选择。
-          这将在下一个部分进行介绍。标签
-          <code>{{ content }}</code>
-          可以将content插入页面中。
+<blockquote>
+<p>“在将 Justkez.com 转换成基于 Jekyll 的网站后，我仔细思索我该如何添加我最近的 Twitter 条目至网站的主页上。在 WordPress 的世界里，这可以通过一个插件来完成，其结果可能会或不会阻塞主页加载，也可能提供了缓存功能，但同时肯定也会有各种额外支出。… 但 Jekyll 不会这样。”</p>
+</blockquote></li>
+<li><p><a href="http://mikewest.org/2009/11/my-jekyll-fork">‘我的 Jekyll Fork’， Mike West</a></p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_posts</code></p>
-      </td>
-      <td>
-        <p>
+<blockquote>
+<p>“Jekyll 是一个构架良好的复古产物，让时光倒退回 WordPress 之前，那时人还是人，而 HTML 却是静态的。我钟意它的理念，故提供了少量对其内核的改进。这里，我将展现出我的 fork 的特色，并希望能激发一些与众不同的启示。”</p>
+</blockquote></li>
+<li><p><a href="http://cartera.me/2010/08/12/about-this-website/">‘关于本网站’，Carter Allen</a></p>
 
-          这里放的就是你的文章了。文件格式很重要，必须要符合:
-          <code>YEAR-MONTH-DAY-title.MARKUP</code>。
-          <a href="../permalinks/">永久链接</a> 可以在文章中自己定制，但是数据和标记语言都是根据文件名来确定的。
+<blockquote>
+<p>“Jekyll 拥有了我认为一个博客引擎所应该具有的一切。千真万确。虽然它还不完美，但这正是他的魅力之所在，如果某处出了问题，我知道它应该如何工作，并知道如何去修复它。 它可以只在你的电脑里运行，给你和你的浏览器之间添加了一个 “运行” 的步骤。我完全只使用了 TextMate 和基本的 HTML5 和 CSS3，然后在最后给标记语言添加了几个变量。突然之间，我的网站便已大功告成。”</p>
+</blockquote></li>
+<li><p><a href="http://www.justkez.com/generating-a-tag-cloud-in-jekyll/">在 Jekyll 里生成一个标签云 (Tag Cloud)</a></p></li>
+</ul>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_data</code></p>
-      </td>
-      <td>
-        <p>
+<p>一个通过 Jekyll 来实现标签云和单独标签列表页面的教程。</p>
 
-          格式化好的网站数据应放在这里。jekyll 的引擎会自动加载在该目录下所有的 yaml 文件（后缀是 <code>.yml</code> 或者 <code>.yaml</code>）。如果有一个 <code>members.yml</code> 文件在该目录下，你就可以通过 <code>site.data.members</code> 获取该文件的内容。
+<ul>
+<li><a href="http://rfelix.com/2010/01/19/jekyll-extensions-minus-equal-pain/">Jekyll 扩展 -= 痛苦</a></li>
+</ul>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_site</code></p>
-      </td>
-      <td>
-        <p>
+<p>一种可以<a href="http://github.com/rfelix/jekyll_ext">扩展 Jekyll</a>，而不去 forking 和修改 Jekyll gem 源代码的方法，以及一些可供复用和分享的<a href="http://wiki.github.com/rfelix/jekyll_ext/extensions">便携 Jekyll 扩展</a>。</p>
 
-          一旦 get3w 完成转换，就会将生成的页面放在这里（默认）。最好将这个目录放进你的 <code>.gitignore</code> 文件中。
-
-        </p>
-      </td>
-    </tr>
-     <tr>
-      <td>
-        <p><code>.jekyll-metadata</code></p>
-      </td>
-      <td>
-        <p>
-
-          该文件帮助 get3w 跟踪哪些文件从上次建立站点开始到现在没有被修改，哪些文件需要在下一次站点建立时重新生成。该文件不会被包含在生成的站点中。将它加入到你的 <code>.gitignore</code> 文件可能是一个好注意。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>index.html</code> and other HTML, Markdown, Textile files</p>
-      </td>
-      <td>
-        <p>
-
-          如果这些文件中包含 <a href="../frontmatter/">YAML 头信息</a> 部分，get3w 就会自动将它们进行转换。当然，其他的如 <code>.html</code>, <code>.markdown</code>, <code>.md</code>, 或者 <code>.textile</code> 等在你的站点根目录下或者不是以上提到的目录中的文件也会被转换。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Other Files/Folders</p>
-      </td>
-      <td>
-        <p>
-
-          其他一些未被提及的目录和文件如
-          <code>css</code> 还有 <code>images</code> 文件夹，
-          <code>favicon.ico</code> 等文件都将被完全拷贝到生成的 site 中。这里有一些<a href="../sites/">使用 get3w 的站点</a>，如果你感兴趣就来看看吧。
-
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<ul>
+<li><a href="http://numbers.brighterplanet.com/2010/08/09/sharing-rails-views-with-jekyll">在 Jekyll 里使用你的 Rails 布局</a></li>
+</ul>
 
                             <br>
                             
@@ -408,7 +301,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /structure; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /resources; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

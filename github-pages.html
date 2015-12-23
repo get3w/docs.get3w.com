@@ -78,7 +78,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/structure.html" class="active">
+    <a href="http://get3w.github.io/docs.get3w.com/structure.html">
       <span>目录结构</span>
     </a>
   </li>
@@ -173,7 +173,7 @@
 <h4>其他</h4>
 <ul>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/github-pages.html">
+    <a href="http://get3w.github.io/docs.get3w.com/github-pages.html" class="active">
       <span>GitHub Pages</span>
     </a>
   </li>
@@ -228,175 +228,127 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>目录结构</h1>
+                            <h1>Github Pages</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>get3w 的核心其实是一个文本转换引擎。它的概念其实就是：你用你最喜欢的标记语言来写文章，可以是 Markdown, 也可以是 Textile, 或者就是简单的 HTML, 然后 get3w 就会帮你套入一个或一系列的布局中。在整个过程中你可以设置 URL 路径，你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。</p>
+                            <p><a href="http://pages.github.com">Github Pages</a> 是面向用户、组织和项目开放的公共静态页面搭建托管服
+务，站点可以被免费托管在 Github 上，你可以选择使用 Github Pages 默
+认提供的域名 <a href="">github.io</a> 或者自定义域名来发布站点。Github Pages 支持
+自动利用 Jekyll 生成站点，也同样支持纯 HTML 文档，将你的 Jekyll 站
+点托管在 Github Pages 上是一个不错的选择。</p>
 
-<p>一个基本的 get3w 网站的目录结构一般是像这样的：</p>
+<h2>将 Jekyll 部署到 Github Pages 上</h2>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">.
-├── _config.yml
-├── _drafts
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── _includes
-|   ├── footer.html
-|   └── header.html
-├── _layouts
-|   ├── default.html
-|   └── post.html
-├── _posts
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-├── _site
-├── .jekyll-metadata
-└── index.html</code></pre></figure>
+<p>Github Pages 依靠 Github 上项目的某些特定分支来工作。Github Pages
+分为两种基本类型：用户/组织的站点和项目的站点。搭建这两种类型站
+点的方法除了一小些细节之外基本一致。</p>
 
-<p>来看看这些都有什么用：</p>
+<h3>用户和组织的站点</h3>
 
-<div class="ct-table-wrapper ct-border --all">
-<table class="ct-striped">
-  <thead>
-    <tr>
-      <th>文件 / 目录</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <p><code>_config.yml</code></p>
-      </td>
-      <td>
-        <p>
+<p>用户和组织的站点被放置在一个特殊的专用仓库中，在该仓库中只存在
+Github Pages 的相关文件。这个仓库应该根据用户/组织的名称来命名，
+例如： <a href="https://github.com/mojombo/mojombo.github.io">@mojombo 的用户站点仓库</a> 应该被命名为 <code>mojombo.github.io</code> 。</p>
 
-          保存<a href="../configuration/">配置</a>数据。很多配置选项都可以直接在命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
+<p>仓库中<code>master</code>分支里的文件将会被用来生成 Github Pages 站点，所以请
+确保你的文件储存在该分支上。</p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_drafts</code></p>
-      </td>
-      <td>
-        <p>
-
-          drafts（草稿）是未发布的文章。这些文件的格式中都没有 <code>title.MARKUP</code> 数据。学习如何 <a href="../drafts/">使用草稿</a>.
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_includes</code></p>
-      </td>
-      <td>
-        <p>
-
-          你可以加载这些包含部分到你的布局或者文章中以方便重用。可以用这个标签
-          <code>{% include file.ext %}</code>
-          来把文件 <code>_includes/file.ext</code> 包含进来。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_layouts</code></p>
-      </td>
-      <td>
-        <p>
-
-          layouts（布局）是包裹在文章外部的模板。布局可以在 <a href="../frontmatter/">YAML 头信息</a>中根据不同文章进行选择。
-          这将在下一个部分进行介绍。标签
-          <code>{{ content }}</code>
-          可以将content插入页面中。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_posts</code></p>
-      </td>
-      <td>
-        <p>
-
-          这里放的就是你的文章了。文件格式很重要，必须要符合:
-          <code>YEAR-MONTH-DAY-title.MARKUP</code>。
-          <a href="../permalinks/">永久链接</a> 可以在文章中自己定制，但是数据和标记语言都是根据文件名来确定的。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_data</code></p>
-      </td>
-      <td>
-        <p>
-
-          格式化好的网站数据应放在这里。jekyll 的引擎会自动加载在该目录下所有的 yaml 文件（后缀是 <code>.yml</code> 或者 <code>.yaml</code>）。如果有一个 <code>members.yml</code> 文件在该目录下，你就可以通过 <code>site.data.members</code> 获取该文件的内容。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_site</code></p>
-      </td>
-      <td>
-        <p>
-
-          一旦 get3w 完成转换，就会将生成的页面放在这里（默认）。最好将这个目录放进你的 <code>.gitignore</code> 文件中。
-
-        </p>
-      </td>
-    </tr>
-     <tr>
-      <td>
-        <p><code>.jekyll-metadata</code></p>
-      </td>
-      <td>
-        <p>
-
-          该文件帮助 get3w 跟踪哪些文件从上次建立站点开始到现在没有被修改，哪些文件需要在下一次站点建立时重新生成。该文件不会被包含在生成的站点中。将它加入到你的 <code>.gitignore</code> 文件可能是一个好注意。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>index.html</code> and other HTML, Markdown, Textile files</p>
-      </td>
-      <td>
-        <p>
-
-          如果这些文件中包含 <a href="../frontmatter/">YAML 头信息</a> 部分，get3w 就会自动将它们进行转换。当然，其他的如 <code>.html</code>, <code>.markdown</code>, <code>.md</code>, 或者 <code>.textile</code> 等在你的站点根目录下或者不是以上提到的目录中的文件也会被转换。
-
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Other Files/Folders</p>
-      </td>
-      <td>
-        <p>
-
-          其他一些未被提及的目录和文件如
-          <code>css</code> 还有 <code>images</code> 文件夹，
-          <code>favicon.ico</code> 等文件都将被完全拷贝到生成的 site 中。这里有一些<a href="../sites/">使用 get3w 的站点</a>，如果你感兴趣就来看看吧。
-
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="ct-alert ct-mb-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">自定义域名不影响仓库命名</span><br>
+      Github Pages 初始被设置部署在
+      <code>username.github.io</code> 子域名上, 这就是为什么
+      <strong>即使你使用自定义域名</strong>仓库还需要这样命名。
+    </div>
+  </div>
 </div>
+
+<h3>项目的站点</h3>
+
+<p>不同于用户和组织的站点，项目的站点文件存放在项目本身仓库的
+<code>gh-pages</code> 分支中。该分支下的文件将会被 Jekyll 处理，生成的站点会被
+部署到你的用户站点的子目录上，例如 <code>username.github.io/project</code> （除
+非指定了一个自定义的域名）。</p>
+
+<p>Jekyll 项目本身就是一个很好的例子，Jekyll 项目的代码存放在
+<a href="https://github.com/get3w/get3w">master 分支</a> ， 而 Jekyll 的项目站点（就是你现在看见的网页）包含在同一仓库的
+<a href="https://github.com/get3w/get3w/tree/gh-pages">gh-pages 分支</a> 中。</p>
+
+<h3>项目站点的网址结构</h3>
+
+<p>你最好在将 Jekyll 站点提交到 <code>gh-pages</code> 之前先预览一下。因为 Github
+上项目站点的子目录结构会使站点的网址结构变得复杂。这里有一些处
+理 Github Pages 子目录结构（<code>username.github.io/project-name/</code>）的方法
+使你本地浏览的站点和部署在 Github Pages 上的站点一致，方便你的维
+护。</p>
+
+<ol>
+<li> 在 <code>_config.yml</code> 中，设置 <code>baseurl</code> 选项为 <code>/project-name</code> -- 注意必须存在头部的斜杠以及<strong>不能</strong>有尾部的斜杠。</li>
+<li> JS 或者 CSS 文件的引用格式应该如下：<code>{{ site.baseurl}}/path/to/css.css</code> -- 注意斜杠之后必须紧随变量（在 &quot;Path&quot; 之后）。</li>
+<li> 创建固定链接和内部链接的格式应该如下： <code>{{ site.baseurl }}{{ post.url }}</code> -- 注意两个变量之间不存在斜杠。</li>
+<li> 最后，如果你想在提交/部署之前浏览的话，请使用 <code>jekyll serve --baseurl &#39;&#39;</code>命令，请确定在 <code>--baseurl</code> 的选项之后存在<strong>空串</strong>，这样的话你就可以在 <code>localhost:4000</code> 看到你的站点（站点根地址不存在 <code>/project-name</code>）。</li>
+</ol>
+
+<p>用这种方法你就可以在本地从根地址预览站点，而在 Github 上以
+<code>gh-pages</code> 分支生成站点的时候能以 <code>/project-name</code> 为根地址并且正确地
+显示。</p>
+
+<div class="ct-alert ct-mb-lg ct-left --danger">
+  <div class="inner">
+    <i class="fa fa-sort-alpha-desc ct-color-yellow-a200"></i>
+    <div class="content">
+    <span class="ct-h6">GitHub Pages 的文档，帮助和支持</span><br>
+    想获得关于 Github Pages 的更多信息和解决方案，你应该访问
+    <a href="https://help.github.com/categories/20/articles">GitHub’s Pages 帮助部分</a>。
+    如果无法找到解决方案，你可以联系 <a
+    href="https://github.com/contact">GitHub 支持</a>。
+    </div>
+  </div>
+</div>
+
+<h3>模仿 Github 风格 Markdown</h3>
+
+<p>Github 风格 Markdown 与常规 Markdown 有
+<a href="https://help.github.com/articles/github-flavored-markdown">些许差异</a>。你可以在本地用
+以下的<a href="/docs/configuration">设置</a>
+来模仿 Github 风格 Markdown。</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">pygments</span><span class="pi">:</span> <span class="s">true</span>
+<span class="s">markdown</span><span class="pi">:</span> <span class="s">redcarpet</span>
+<span class="s">redcarpet</span><span class="pi">:</span>
+  <span class="s">extensions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">hard_wrap</span>
+    <span class="pi">-</span> <span class="s">no_intra_emphasis</span>
+    <span class="pi">-</span> <span class="s">autolink</span>
+    <span class="pi">-</span> <span class="s">strikethrough</span>
+    <span class="pi">-</span> <span class="s">fenced_code_blocks</span></code></pre></figure>
+
+<p>这些设置将为 Markdown 引擎引入以下来自 Github 风格 Markdown 的特性：</p>
+
+<ul>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#newlines">换行</a></li>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#multiple-underscores-in-words">语句中的多个下划线</a></li>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#url-autolinking">网址自动链接</a></li>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#strikethrough">删除线</a></li>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks">代码块</a></li>
+<li>  <a href="https://help.github.com/articles/github-flavored-markdown#syntax-highlighting">代码高亮</a></li>
+</ul>
+
+<div class="ct-alert ct-mb-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">Github 风格 Markdown 并不适用于较长的文章</span><br>
+      注意 Github 风格 Markdown 是为方便评论和报告bug而创造的，并不适用于一个网站或blog。
+    </div>
+  </div>
+</div>
+
+<p>如果你没有<a href="https://github.com/vmg/redcarpet">Redcarpet</a>，你可以用以下的命令来安装。</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">gem install redcarpet</code></pre></figure>
 
                             <br>
                             
@@ -408,7 +360,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /structure; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /github-pages; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

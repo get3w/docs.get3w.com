@@ -78,7 +78,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/structure.html" class="active">
+    <a href="http://get3w.github.io/docs.get3w.com/structure.html">
       <span>目录结构</span>
     </a>
   </li>
@@ -188,7 +188,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/troubleshooting.html">
+    <a href="http://get3w.github.io/docs.get3w.com/troubleshooting.html" class="active">
       <span>常见问题</span>
     </a>
   </li>
@@ -228,174 +228,103 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>目录结构</h1>
+                            <h1>常见问题</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>get3w 的核心其实是一个文本转换引擎。它的概念其实就是：你用你最喜欢的标记语言来写文章，可以是 Markdown, 也可以是 Textile, 或者就是简单的 HTML, 然后 get3w 就会帮你套入一个或一系列的布局中。在整个过程中你可以设置 URL 路径，你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。</p>
+                            <p>如果你在安装或者使用 Jekyll 的过程中遇到了问题，这里有一些建议也许可以帮助到你。如果你所遇到的问题没有包含在下面，请<a href="https://github.com/get3w/get3w/issues/new">提交一个 issue</a>，这样 Jekyll 团队才能让每个人有更好的使用体验。</p>
 
-<p>一个基本的 get3w 网站的目录结构一般是像这样的：</p>
+<h2>安装问题</h2>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">.
-├── _config.yml
-├── _drafts
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── _includes
-|   ├── footer.html
-|   └── header.html
-├── _layouts
-|   ├── default.html
-|   └── post.html
-├── _posts
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-├── _site
-├── .jekyll-metadata
-└── index.html</code></pre></figure>
+<p>如果你在安装 gem 的过程中遇到问题，可能你需要安装为 ruby 1.9.1 的拓展模块编译所需要的头文件，在 Ubuntu 或 Debian 系统中安装可以通过运行：</p>
 
-<p>来看看这些都有什么用：</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install ruby1.9.1-dev</code></pre></figure>
 
-<div class="ct-table-wrapper ct-border --all">
-<table class="ct-striped">
-  <thead>
-    <tr>
-      <th>文件 / 目录</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <p><code>_config.yml</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 Rdd Hat，CentOS 和 Fedora 系统中安装你可以通过运行：</p>
 
-          保存<a href="../configuration/">配置</a>数据。很多配置选项都可以直接在命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo yum install ruby-devel</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_drafts</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 <a href="http://nearlyfreespeech.net/">NearlyFreeSpeech</a> 中你需要在运行命令的时候添加下面的环境变量：</p>
 
-          drafts（草稿）是未发布的文章。这些文件的格式中都没有 <code>title.MARKUP</code> 数据。学习如何 <a href="../drafts/">使用草稿</a>.
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">RB_USER_INSTALL</span><span class="o">=</span><span class="nb">true </span>gem install jekyll</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_includes</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 OSX 系统中你可能需要升级 RubyGems：</p>
 
-          你可以加载这些包含部分到你的布局或者文章中以方便重用。可以用这个标签
-          <code>{% include file.ext %}</code>
-          来把文件 <code>_includes/file.ext</code> 包含进来。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo gem update --system</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_layouts</code></p>
-      </td>
-      <td>
-        <p>
+<p>如果你还是遇到问题，你可能需要<a href="http://www.zlu.me/blog/2012/02/21/install-native-ruby-gem-in-mountain-lion-preview/">使用 XCode 来安装命令行工具</a></p>
 
-          layouts（布局）是包裹在文章外部的模板。布局可以在 <a href="../frontmatter/">YAML 头信息</a>中根据不同文章进行选择。
-          这将在下一个部分进行介绍。标签
-          <code>{{ content }}</code>
-          可以将content插入页面中。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo gem install jekyll</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_posts</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 Gentoo 上安装 RubyGems：</p>
 
-          这里放的就是你的文章了。文件格式很重要，必须要符合:
-          <code>YEAR-MONTH-DAY-title.MARKUP</code>。
-          <a href="../permalinks/">永久链接</a> 可以在文章中自己定制，但是数据和标记语言都是根据文件名来确定的。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo emerge -av dev-ruby/rubygems</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_data</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 Windows 下你可能需要安装 <a href="http://wiki.github.com/oneclick/rubyinstaller/development-kit">RubyInstaller
+DevKit</a>。</p>
 
-          格式化好的网站数据应放在这里。jekyll 的引擎会自动加载在该目录下所有的 yaml 文件（后缀是 <code>.yml</code> 或者 <code>.yaml</code>）。如果有一个 <code>members.yml</code> 文件在该目录下，你就可以通过 <code>site.data.members</code> 获取该文件的内容。
+<h2>运行 Jekyll 时的问题</h2>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_site</code></p>
-      </td>
-      <td>
-        <p>
+<p>在 Debian 或者 Ubuntu 系统中，你可能需要在 path 里添加 <code>/var/lib/gems/1.8/bin/</code> 来使
+<code>jekyll</code> 命令可以在终端中执行。</p>
 
-          一旦 get3w 完成转换，就会将生成的页面放在这里（默认）。最好将这个目录放进你的 <code>.gitignore</code> 文件中。
+<h2>Base-URL 问题</h2>
 
-        </p>
-      </td>
-    </tr>
-     <tr>
-      <td>
-        <p><code>.jekyll-metadata</code></p>
-      </td>
-      <td>
-        <p>
+<p>如果你正在这样使用 base-url 选项：</p>
 
-          该文件帮助 get3w 跟踪哪些文件从上次建立站点开始到现在没有被修改，哪些文件需要在下一次站点建立时重新生成。该文件不会被包含在生成的站点中。将它加入到你的 <code>.gitignore</code> 文件可能是一个好注意。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">jekyll serve --baseurl <span class="s1">'/blog'</span></code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>index.html</code> and other HTML, Markdown, Textile files</p>
-      </td>
-      <td>
-        <p>
+<p>… 那么你需要在访问网页的时候使用：</p>
 
-          如果这些文件中包含 <a href="../frontmatter/">YAML 头信息</a> 部分，get3w 就会自动将它们进行转换。当然，其他的如 <code>.html</code>, <code>.markdown</code>, <code>.md</code>, 或者 <code>.textile</code> 等在你的站点根目录下或者不是以上提到的目录中的文件也会被转换。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">http://localhost:4000/blog/index.html</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Other Files/Folders</p>
-      </td>
-      <td>
-        <p>
+<p>这样访问会出现错误：</p>
 
-          其他一些未被提及的目录和文件如
-          <code>css</code> 还有 <code>images</code> 文件夹，
-          <code>favicon.ico</code> 等文件都将被完全拷贝到生成的 site 中。这里有一些<a href="../sites/">使用 get3w 的站点</a>，如果你感兴趣就来看看吧。
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">http://localhost:4000/blog</code></pre></figure>
 
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h2>配置问题</h2>
+
+<p>冲突的配置设置的优先顺序如下：
+1.  命令行标志
+2.  配置文件设置
+3.  默认配置</p>
+
+<p>也就是说，默认配置会被 <code>_config.yml</code> 中指定的选项所覆盖，而在命令行中指定的参数配置会覆盖其它地方的配置。</p>
+
+<h2>Markup 问题</h2>
+
+<p>Jekyll 所使用的不同的 Markup 引擎可能会有一些问题。下面的文件可能会帮助你如果你遇到类似的问题。</p>
+
+<h3>Maruku</h3>
+
+<p>如果你的链接中有一些需要避免的的词，你需要这样写：</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">![Alt text](http://yuml.me/diagram/class/[Project]-&gt;[Task])</code></pre></figure>
+
+<p>如果你有一个空的标签，比如 <code>&lt;script src=&quot;js.js&quot;&gt;&lt;/script&gt;</code>，Maruku 会将它转换成 <code>&lt;script src=&quot;js.js&quot; /&gt;</code>。 这将会在火狐或者其它浏览器中出现问题，而且<a href="http://www.w3.org/TR/xhtml1/#C_3">在 XHTML 中不推荐使用</a>。一个简单的避免方法就是在起始标签和结束标签之间放一个空格。</p>
+
+<h3>RedCloth</h3>
+
+<p>4.1.1 和更高的版本将不支持 notextile 标签。<a href="http://aaronqian.com/articles/2009/04/07/redcloth-ate-my-notextile.html">这是一个已知的 bug</a>可能有希望在 4.2 版本中得到修复。你可以继续使用 4.1.9 版本，但是测试套件需要安装 4.1.0 版本。如果使用一个不支持 notextile 标签的版本， 你可能需要注意 Pygments 的语法高亮格式会不正确，还有其它一些可能的问题。如果你遇到这个问题你只需要安装 4.1.0 版本。</p>
+
+<h3>Liquid</h3>
+
+<p>最新的 2.0 版本似乎打破了 <code>{{</code> 在模板中的使用，不再类似以前的版本，在 2.0 版本使用 <code>{{</code> 会出现以下问题：</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="s1">'{{'</span> was not properly terminated with regexp: /<span class="se">\}\}</span>/  <span class="o">(</span>Liquid::SyntaxError<span class="o">)</span></code></pre></figure>
+
+<h3>摘要</h3>
+
+<p>从 V1.0.0 版本开始，Jekyll 已经可以自动生成文章摘要。 一直到 v1.1.0 版本，Jekyll 仍使用Liquid 来传递摘要，这将会在引用不存在或标记没有被关闭时造成奇怪的问题。如果你遇到了这些问题，你可以尝试将在 <code>_config.yml</code> 中设置 <code>excerpt_separator: &quot;&quot;</code> 或设置成不敏感的字符。</p>
+
+<div class="ct-alert ct-mb-lg ct-left --danger">
+  <div class="inner">
+    <i class="fa fa-sort-alpha-desc ct-color-yellow-a200"></i>
+    <div class="content">
+    <span class="ct-h6">请为你遇到的问题提交一个 issue</span><br>
+    如果你发现一个 bug，请在 GitHub 上<a href="https://github.com/get3w/get3w/issues/new">提交一个 issue</a> 描述你所遇到的问题和你的解决方案，我们就能把它放在这里帮助其它用户。
+    </div>
+  </div>
 </div>
 
                             <br>
@@ -408,7 +337,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /structure; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /troubleshooting; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

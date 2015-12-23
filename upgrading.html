@@ -78,7 +78,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/structure.html" class="active">
+    <a href="http://get3w.github.io/docs.get3w.com/structure.html">
       <span>目录结构</span>
     </a>
   </li>
@@ -203,7 +203,7 @@
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/upgrading.html">
+    <a href="http://get3w.github.io/docs.get3w.com/upgrading.html" class="active">
       <span>升级</span>
     </a>
   </li>
@@ -228,174 +228,151 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>目录结构</h1>
+                            <h1>升级</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>get3w 的核心其实是一个文本转换引擎。它的概念其实就是：你用你最喜欢的标记语言来写文章，可以是 Markdown, 也可以是 Textile, 或者就是简单的 HTML, 然后 get3w 就会帮你套入一个或一系列的布局中。在整个过程中你可以设置 URL 路径，你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。</p>
+                            <p>首先，我们需要获取 get3w 的最新版本：</p>
 
-<p>一个基本的 get3w 网站的目录结构一般是像这样的：</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>brew update jekyll</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">.
-├── _config.yml
-├── _drafts
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── _includes
-|   ├── footer.html
-|   └── header.html
-├── _layouts
-|   ├── default.html
-|   └── post.html
-├── _posts
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-├── _site
-├── .jekyll-metadata
-└── index.html</code></pre></figure>
+<div class="ct-alert ct-my-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">提示</span><br>
+      想要迅速建立起一个 get3w 站点并跑起来吗？只需要输入命令
+     <code>jekyll new SITENAME</code>，该命令将创建一个包含基本功能的 get3w 站点。
+    </div>
+  </div>
+</div>
 
-<p>来看看这些都有什么用：</p>
+<h3>get3w 命令</h3>
 
-<div class="ct-table-wrapper ct-border --all">
-<table class="ct-striped">
-  <thead>
-    <tr>
-      <th>文件 / 目录</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <p><code>_config.yml</code></p>
-      </td>
-      <td>
-        <p>
+<p>get3w 现在支持命令 <code>build</code> 和 <code>serve</code>，使用起来更加清晰。
+以前你或许会使用命令 <code>jekyll</code> 生成一个网站并用 <code>jekyll --server</code> 在本地浏览，
+现在可以用子命令 <code>jekyll build</code> 和 <code>jekyll serve</code> 代替。
+如果当一个文件改变时，你希望 get3w 自动做出相应的更新，只需要在命令的末尾加上 <code>--watch</code> 即可。</p>
 
-          保存<a href="../configuration/">配置</a>数据。很多配置选项都可以直接在命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
+<div class="ct-alert ct-my-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">Watching 和 Serving</span><br>
+      使用新的子命令，网站的操作方式也有一些变化。以前的做法是在网站配置文件中加上
+     `server: true`，现在用 `jekyll serve` 即可。 同样的 `watch: true` 也是如此，在
+     `jekyll serve` 或 `jekyll build` 后边加上 即可 `&#45;&#45;watch`。
+    </div>
+  </div>
+</div>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_drafts</code></p>
-      </td>
-      <td>
-        <p>
+<h3>绝对地址</h3>
 
-          drafts（草稿）是未发布的文章。这些文件的格式中都没有 <code>title.MARKUP</code> 数据。学习如何 <a href="../drafts/">使用草稿</a>.
+<p>在 get3w v1.0 中，我们引入了“绝对地址”。v1.1 之前，使用 <strong>opt-in</strong>。从 v1.1 开始,
+将使用 <strong>opt-out</strong> ，这意味着 get3w 将使用绝对地址代替相对相对地址。</p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_includes</code></p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li>如果要使用绝对地址，需要在配置文件中加上 <code>relative_permalinks: false</code> 。</li>
+<li>如果要继续使用相对地址，在配置文件中加上 <code>relative_permalinks: true</code> 。</li>
+</ul>
 
-          你可以加载这些包含部分到你的布局或者文章中以方便重用。可以用这个标签
-          <code>{% include file.ext %}</code>
-          来把文件 <code>_includes/file.ext</code> 包含进来。
+<div class="ct-alert ct-my-lg ct-left --warning" id="absolute-permalinks-warning">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">在 v1.1 中，绝对地址将成为默认配置</span><br>
+      从 get3w v1.1.0 开始， `relative_permalinks` 默认为 `false`，这意味着所
+      有页面默认为绝对地址，该配置会一直保留到 v2.0 。
+    </div>
+  </div>
+</div>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_layouts</code></p>
-      </td>
-      <td>
-        <p>
+<h3>草稿箱</h3>
 
-          layouts（布局）是包裹在文章外部的模板。布局可以在 <a href="../frontmatter/">YAML 头信息</a>中根据不同文章进行选择。
-          这将在下一个部分进行介绍。标签
-          <code>{{ content }}</code>
-          可以将content插入页面中。
+<p>get3w 现在支持草稿箱，并且可以很容易的在发布前预览。想要开始编写草稿，只需要在项目
+中建立 <code>_drafts</code> 文件夹（和 <code>_posts</code> 在同一目录），然后新建一个 markdown 文件即可。
+想要预览你的草稿，只需要在命令 <code>jekyll serve</code> 后边加上 <code>--drafts</code> 。</p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_posts</code></p>
-      </td>
-      <td>
-        <p>
+<div class="ct-alert ct-my-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">草稿没有日期</span><br>
+      跟文章不同，草稿没有日期，因为还没有发布。只需用标题（比如 `my-draft-post.md` ）
+      做为文件名，而不是 `2013-07-01-my-draft-post.md` 。
+    </div>
+  </div>
+</div>
 
-          这里放的就是你的文章了。文件格式很重要，必须要符合:
-          <code>YEAR-MONTH-DAY-title.MARKUP</code>。
-          <a href="../permalinks/">永久链接</a> 可以在文章中自己定制，但是数据和标记语言都是根据文件名来确定的。
+<h3>自定义配置文件</h3>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_data</code></p>
-      </td>
-      <td>
-        <p>
+<p>不仅可以通过在命令行末加标志, 还能够使用一个 get3w 自定义配置文件。这样可以帮助区分不同
+的环境，或以编程方式覆盖用户指定的配置。只需要在命令 <code>jekyll</code> 后加上 <code>--config</code> ，然后
+输入一个或多个配置文件的路径（以逗点隔开，不能有空格）。</p>
 
-          格式化好的网站数据应放在这里。jekyll 的引擎会自动加载在该目录下所有的 yaml 文件（后缀是 <code>.yml</code> 或者 <code>.yaml</code>）。如果有一个 <code>members.yml</code> 文件在该目录下，你就可以通过 <code>site.data.members</code> 获取该文件的内容。
+<h4>所以，不再建议使用以下这些命令：</h4>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>_site</code></p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li><code>--no-server</code></li>
+<li><code>--no-auto</code></li>
+<li><code>--auto</code> (现在的 <code>--watch</code>)</li>
+<li><code>--server</code></li>
+<li><code>--url=</code></li>
+<li><code>--maruku</code>，<code>--rdiscount</code> ，和 <code>--redcarpet</code></li>
+<li><code>--pygments</code></li>
+<li><code>--permalink=</code></li>
+<li><code>--paginate</code></li>
+</ul>
 
-          一旦 get3w 完成转换，就会将生成的页面放在这里（默认）。最好将这个目录放进你的 <code>.gitignore</code> 文件中。
+<div class="ct-alert ct-my-lg ct-left --info">
+  <div class="inner">
+    <i class="fa fa-info-circle ct-color-yellow-a200"></i>
+    <div class="content">
+      <span class="ct-h6">显式指定配置文件</span><br>
+      如果你使用了标志 `&#45;&#45;config` ， get3w 将忽略文件
+        `&#95;config.yml` 。想对个配多置文件中组合使用吗？没问题， get3w 支持通过命令行
+        指定多个配置文件。越往右，配置文件优先级越高。如果我运行
+        `jekyll serve &#45;&#45;config &#95;config.yml,&#95;config-dev.yml`，并且他们
+        包含同一个配置项，那么这个配置项的结果将是右边 `&#95;config-dev.yml` 的值，而非
+        左边`&#95;config.yml` 。
+    </div>
+  </div>
+</div>
 
-        </p>
-      </td>
-    </tr>
-     <tr>
-      <td>
-        <p><code>.jekyll-metadata</code></p>
-      </td>
-      <td>
-        <p>
+<h3>新的配置选项</h3>
 
-          该文件帮助 get3w 跟踪哪些文件从上次建立站点开始到现在没有被修改，哪些文件需要在下一次站点建立时重新生成。该文件不会被包含在生成的站点中。将它加入到你的 <code>.gitignore</code> 文件可能是一个好注意。
+<p>get3w 1.0 引进了几个新的配置选项. 在升级之前，你应该检查一下在 pre-1.0 的配置文件中是否
+有这些，如果有，确保正确配置了：</p>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><code>index.html</code> and other HTML, Markdown, Textile files</p>
-      </td>
-      <td>
-        <p>
+<ul>
+<li><code>excerpt_separator</code></li>
+<li><code>host</code></li>
+<li><code>include</code></li>
+<li><code>keep_files</code></li>
+<li><code>layouts</code></li>
+<li><code>show_drafts</code></li>
+<li><code>timezone</code></li>
+<li><code>url</code></li>
+</ul>
 
-          如果这些文件中包含 <a href="../frontmatter/">YAML 头信息</a> 部分，get3w 就会自动将它们进行转换。当然，其他的如 <code>.html</code>, <code>.markdown</code>, <code>.md</code>, 或者 <code>.textile</code> 等在你的站点根目录下或者不是以上提到的目录中的文件也会被转换。
+<h3>根路径</h3>
 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Other Files/Folders</p>
-      </td>
-      <td>
-        <p>
+<p>通常，你想要在不同的地方运行你的 get3w 站点，比如发布前在本地预览。get3w 1.0 中使用标志
+ <code>--baseurl</code> 即可。要使用这个特写，首先在网站的 <code>_config.yml</code> 中写入生产环境的 <code>baseurl</code>
+ ；然后，遍历一遍代码，对所有相对地址加上前缀 <code>{{ site.baseurl }}</code>.
+当你想在本地测试的时候，在 <code>jekyll serve</code> 后传入标志 <code>--baseurl</code> 并跟上本地地址即可
+（可能是 <code>/</code> ）。</p>
 
-          其他一些未被提及的目录和文件如
-          <code>css</code> 还有 <code>images</code> 文件夹，
-          <code>favicon.ico</code> 等文件都将被完全拷贝到生成的 site 中。这里有一些<a href="../sites/">使用 get3w 的站点</a>，如果你感兴趣就来看看吧。
-
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="ct-alert ct-my-lg ct-left --warning">
+  <div class="inner">
+    <i class="fa fa-info ct-color-red"></i>
+    <div class="content">
+    <span class="ct-h6">所有的地址包含斜杠</span><br>
+    如果你按照上边的方法做了，记得所有的地址前有一个斜杠。因此，
+   `site.baseurl = /` 和 `post.url = /2013/06/05/my-fun-post/`最终形成的地址有两个斜杠
+  开头。所以建议在  `baseurl` 不是 `/`时使用  `site.baseurl`。
+    </div>
+  </div>
 </div>
 
                             <br>
@@ -408,7 +385,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /structure; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /upgrading; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */
