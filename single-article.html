@@ -179,7 +179,7 @@
     </a>
   </li>
   <li>
-    <a href="/single-article.html">
+    <a href="/single-article.html" class="active">
       <span>调取指定栏目文章列表</span>
     </a>
   </li>
@@ -227,7 +227,7 @@
     </a>
   </li>
   <li>
-    <a href="/example.html" class="active">
+    <a href="/example.html">
       <span>示例</span>
     </a>
   </li>
@@ -247,18 +247,33 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>Example</h1>
+                            <h1>调取指定栏目文章列表</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>示例：</p>
+                            <p>如果我们要调取特定的某一个栏目的内容，可以这样做：</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{% for post in site.categories.[栏目名称] %}
+      &lt;a href="http://{{ post.title }}" title="{{ post.content | remove: '&lt;p&gt;' | remove: '&lt;/p&gt;' |  remove: '&lt;!--break--&gt;' }}" target="_blank"&gt;
+          {% if post.tags %}
+              &lt;i class="icon-tags"&gt;{{ post.tags }}&lt;/i&gt;
+          {% endif %}
+          #如果内容中填写了标签，则显示
+          {% if post.attr %}
+              &lt;i class="icon-hot"&gt;{{ post.attr }}&lt;/i&gt;
+          {% endif %}
+          #判断是否设置热点，内容如果设置热点属性，即显示，否则不显示
+          {{ post.name }}
+          &lt;span class="link-content"&gt;{{ post.content | remove: '&lt;p&gt;' | remove: '&lt;/p&gt;' | split:'&lt;!--break--&gt;' | first }}&lt;/span&gt;
+      &lt;/a&gt;
+{% endfor %}</code></pre></figure>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/deployment-methods" title="部署方法">&larr; Prev</a>
+                              <a class="ct-fl"  href="/field" title="内容字段">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/extras" title="附加功能">Next &rarr;</a>
+                              <a class="ct-fr" href="#" disabled>Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -271,7 +286,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /example; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /single-article; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

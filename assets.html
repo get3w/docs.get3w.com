@@ -8,10 +8,10 @@
     <title></title>
     <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/animate.css/3.4.0/animate.min.css" rel="stylesheet">
-    <link href="http://get3w.github.io/docs.get3w.com/assets/css/ct.min.css" rel="stylesheet">
-    <link href="http://get3w.github.io/docs.get3w.com/assets/css/docs.css" rel="stylesheet">
-    <link href="http://get3w.github.io/docs.get3w.com/assets/css/pygments.css" rel="stylesheet">
-    <link href="http://get3w.github.io/docs.get3w.com/assets/css/layout.css" rel="stylesheet">
+    <link href="/assets/css/ct.min.css" rel="stylesheet">
+    <link href="/assets/css/docs.css" rel="stylesheet">
+    <link href="/assets/css/pygments.css" rel="stylesheet">
+    <link href="/assets/css/layout.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <div class="navigation">
       <div class="navbar-header">
         <a class="logo ct-fl" href="javascript:void();">
-          <img src="http://get3w.github.io/docs.get3w.com/assets/images/docs-logo.png" alt="logo">
+          <img src="/assets/images/docs-logo.png" alt="logo">
         </a>
         <a href="/" class="navbar-toggle ct-fr"><i class="fa fa-reorder"></i></a>
       </div>
@@ -32,12 +32,13 @@
           <a href="docs.html">Docs</a>
           <a href="app.html">apps</a>
           <a href="user.html">user</a>
-          <a class='ct-dropdown-button ct-btn' href='#' data-activates='dropdown1'>Languase</a>
-          <ul id='dropdown1' class='ct-dropdown-content'>
-            <li><a href="#!">English</a></li>
-            <li><a href="#!">Chinese</a></li>
-            <li><a href="#!">Franch</a></li>
-          </ul>
+          <a class='dropdown-button' href='#'>
+          <span class="octicon octicon-globe"></span> 多语言</a>
+          <select id="lang-select" data-canonical="">
+            <option value="en" href="baidu.com" selected="">English</option>
+            <option value="zh-tw">正體中文</option>
+            <option value="zh-cn">简体中文</option>
+          </select>
         </nav>
       </div>
     </div>
@@ -53,37 +54,37 @@
                     <h4>开始使用</h4>
 <ul>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/home.html" >
+    <a href="/home.html" >
       <span>概述</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/installation.html">
+    <a href="/installation.html">
       <span>安装</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/setup.html">
+    <a href="/setup.html">
       <span>建站</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/configuration.html">
+    <a href="/configuration.html">
       <span>配置</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/usage.html">
+    <a href="/usage.html">
       <span>命令</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/structure.html">
+    <a href="/structure.html">
       <span>目录结构</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/migrations.html">
+    <a href="/migrations.html">
       <span>迁移</span>
     </a>
   </li>
@@ -92,47 +93,47 @@
 </h4>
 <ul>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/frontmatter.html">
+    <a href="/frontmatter.html">
       <span>头部配置信息</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/posts.html">
+    <a href="/posts.html">
       <span>文章</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/drafts.html">
+    <a href="/drafts.html">
       <span>草稿</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/pages.html">
+    <a href="/pages.html">
       <span>页面</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/static-files.html">
+    <a href="/static-files.html">
       <span>静态文件</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/variables.html">
+    <a href="/variables.html">
       <span>变量</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/collections.html">
+    <a href="/collections.html">
       <span>集合（Collections）</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/datafiles.html">
+    <a href="/datafiles.html">
       <span>数据文件</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/assets.html" class="active">
+    <a href="/assets.html" class="active">
       <span>资源</span>
     </a>
   </li>
@@ -140,80 +141,98 @@
 <h4>自定义</h4>
 <ul>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/templates.html">
+    <a href="/templates.html">
       <span>模板</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/permalinks.html">
+    <a href="/permalinks.html">
       <span>永久链接</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/pagination.html">
+    <a href="/pagination.html">
       <span>分页功能</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/plugins.html">
+    <a href="/plugins.html">
       <span>插件</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/highlight.html">
+    <a href="/highlight.html">
       <span>代码高亮</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/extras.html">
+    <a href="/extras.html">
       <span>附加功能</span>
+    </a>
+  </li>
+</ul>
+<h4>示例</h4>
+<ul>
+  <li>
+    <a href="/article.html">
+      <span>文章列表</span>
+    </a>
+  </li>
+  <li>
+    <a href="/single-article.html">
+      <span>调取指定栏目文章列表</span>
+    </a>
+  </li>
+  <li>
+    <a href="/field.html">
+      <span>字段</span>
     </a>
   </li>
 </ul>
 <h4>其他</h4>
 <ul>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/github-pages.html">
+    <a href="/github-pages.html">
       <span>GitHub Pages</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/deployment-methods.html">
+    <a href="/deployment-methods.html">
       <span>部署方法</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/continuous-integration.html">
+    <a href="/continuous-integration.html">
       <span>持续集成</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/troubleshooting.html">
+    <a href="/troubleshooting.html">
       <span>常见问题</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/sites.html">
+    <a href="/sites.html">
       <span>使用 Get3w 的站点</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/resources.html">
+    <a href="/resources.html">
       <span>相关资源</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/upgrading.html">
+    <a href="/upgrading.html">
       <span>升级</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/example.html">
+    <a href="/example.html">
       <span>示例</span>
     </a>
   </li>
   <li>
-    <a href="http://get3w.github.io/docs.get3w.com/history.html">
+    <a href="/history.html">
       <span>History</span>
     </a>
   </li>
@@ -277,6 +296,14 @@
 
 <p>这些设置将传递给 Sass，因此所有 Sass 支持的输出样式在这里都可以使用。</p>
 
+                            <!-- <div class="ct-clearfix ct-mx">
+                              
+                              <a class="ct-fl"  href="/usage" title="命令">&larr; Prev</a>
+                              
+                              
+                              <a class="ct-fr" href="/collections" title="集合（Collections）">Next &rarr;</a>
+                              
+                            </div> -->
                             <br>
                             
                               <div id="disqus_thread"></div>
@@ -321,7 +348,7 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="ct-container">
         <div class="ct-row">
             <div class="ct-md-3 ct-sm-12">
-                <a href="/" class="footer-logo"><img src="http://get3w.github.io/docs.get3w.com/assets/images/docs-logo2.png"></a>
+                <a href="/" class="footer-logo"><img src="/assets/images/docs-logo2.png"></a>
             </div>
             <nav class="ct-md-2 ct-sm-6">
                 <h4 class="footer-title">tour</h4>

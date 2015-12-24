@@ -350,6 +350,7 @@ body {
       line-height: 2.1; }
 
 .docs {
+  font-family: Helvetica;
   padding-top: 40px;
   padding-bottom: 40px; }
   .docs .docs-content {
@@ -358,7 +359,7 @@ body {
     .docs .docs-content p {
       font-size: 1rem;
       line-height: 1.8;
-      margin-bottom: 1rem; }
+      margin: 1rem 0; }
   .docs .docs-header {
     overflow: hidden;
     color: #999; }

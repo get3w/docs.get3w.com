@@ -184,7 +184,7 @@
     </a>
   </li>
   <li>
-    <a href="/field.html">
+    <a href="/field.html" class="active">
       <span>字段</span>
     </a>
   </li>
@@ -227,7 +227,7 @@
     </a>
   </li>
   <li>
-    <a href="/example.html" class="active">
+    <a href="/example.html">
       <span>示例</span>
     </a>
   </li>
@@ -247,18 +247,43 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>Example</h1>
+                            <h1>内容字段</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>示例：</p>
+                            <p>当我们在栏目页面或者首页展示一篇内容的时候，需要显示一些特定的字段，在get3w引擎中，系统默认是有定义好一些变量名称，当然您也可以自己添加字段，来展示更多的字段。下面我们先说一下系统定义好的内容字段。</p>
+
+<p><code>content</code> 是内容，我们在调取具体的内容的时候 只需要 <code>{{ post.contnet }}</code>即可调取文章内容。同理<code>{{ post.title }}</code> 是内容标题、 <code>{{ post.url }}</code> 是文章列表、<code>{{ post.excerpt }}</code>是文章简介，会自动截取前20个字符显示。当然，每个字段都是有可远配置的。如：<code>{{ post.content | remove: &#39;&lt;p&gt;&#39; | remove: &#39;&lt;/p&gt;&#39; |  remove: &#39;&lt;!--break--&gt;&#39; }}</code>, 它的作用是去除内容中的特定标签。用此法，你可以进行做任意扩展。</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{{ post.name }}
+{{ post.content | remove: '&lt;p&gt;' | remove: '&lt;/p&gt;' | split:'&lt;!--break--&gt;' | first }}&lt;/span&gt;</code></pre></figure>
+
+<p>自己添加的一些字段名称要写到文章页面的配置信息里，如下：</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">---
+layout: default
+title: "内容字段"
+current: "field"
+navigation: true
+disqus: true
+---</code></pre></figure>
+
+<p>自定义字段的调取方式也是一样的 <code>{{ post.[field name] }}</code></p>
+
+<h2>栏目[页面]字段</h2>
+
+<p>文章可以添加字段、调取字段，那么栏目也是可以的。栏目的字段信息也是显示在具体页面的配置信息里，我们在调取的时候和文章唯一的区别就是把 <code>post.</code> 换成 <code>page.</code>.没错，就是这么简单。</p>
+
+<h2>站点字段</h2>
+
+<p>聪明的同学肯定已经想到了，没错，站点字段的调取方法就是把 <code>post.</code> 换成 <code>site.</code> 。唯一的区别就是所有的配置信息在站点根目录的<code>_config.yml</code>文件中。</p>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/deployment-methods" title="部署方法">&larr; Prev</a>
+                              <a class="ct-fl"  href="/article" title="文章列表">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/extras" title="附加功能">Next &rarr;</a>
+                              <a class="ct-fr" href="/single-article" title="调取指定栏目文章列表">Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -271,7 +296,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /example; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /field; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

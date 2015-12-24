@@ -174,7 +174,7 @@
 <h4>示例</h4>
 <ul>
   <li>
-    <a href="/article.html">
+    <a href="/article.html" class="active">
       <span>文章列表</span>
     </a>
   </li>
@@ -227,7 +227,7 @@
     </a>
   </li>
   <li>
-    <a href="/example.html" class="active">
+    <a href="/example.html">
       <span>示例</span>
     </a>
   </li>
@@ -247,18 +247,81 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>Example</h1>
+                            <h1>文章列表</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>示例：</p>
+                            <h3>调取全站文章列表</h3>
+
+<p>如果你想调取站点内所有的文章，你可以这样做：</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{% for post in site.posts %}
+    &lt;a href="{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;
+{% endfor %}</code></pre></figure>
+
+<p>上面示例代码是调取站点内<code>_posts</code>文件夹下的所有文章，且不具有分页的功能。</p>
+
+<h3>调取全站文章列表（带分页）</h3>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{% for post in paginator.posts %}
+#带有分页功能的文章列表
+  &lt;h3 class="title"&gt;&lt;a href="{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/h3&gt;
+    {% if post.content contains "&lt;!-- more --&gt;" %}
+    {{ post.content | split:'&lt;!-- more --&gt;' | first }}
+    {% else %}
+    {{ post.content | strip_html | truncate:50 }}
+    #判断内容区域是否有字符`&lt;!-- more --&gt;`,如果有，则显示指定字符之前的内容，如果没有则截取50个字符显示内容。
+  {% endif %}
+{% endfor %}</code></pre></figure>
+
+<p>下面是分页项组合按钮</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{% if paginator.previous_page %}
+  {% if paginator.previous_page == 1 %}
+      &lt;a class="btn" href="/"&gt;首页&lt;/a&gt;
+      &lt;a class="btn" href="/"&gt;&amp;laquo; 上一页&lt;/a&gt;
+    {% else %}
+      &lt;a class="btn" href="/"&gt;首页&lt;/a&gt;
+      &lt;a class="btn" href="/page{{paginator.previous_page}}/"&gt;&amp;laquo; 上一页&lt;/a&gt;
+  {% endif %}
+  {% else %}
+    &lt;span&gt;&lt;a class="btn disabled" href="/"&gt;首页&lt;/a&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;a class="btn disabled"&gt;&amp;laquo; 上一页&lt;/a&gt;&lt;/span&gt;
+  {% endif %}
+    &lt;span&gt;&lt;a class="btn disabled"&gt;Page: {{paginator.page}} of {{paginator.total_pages}}&lt;/a&gt;&lt;/span&gt;
+  {% if paginator.next_page %}
+    &lt;a class="btn" href="/page{{paginator.next_page}}/"&gt;下一页 &amp;raquo;&lt;/a&gt;
+    &lt;a class="btn" href="/page{{paginator.total_pages}}/"&gt;末页&lt;/a&gt;
+
+  {% else if paginator.page == paginator.total_pages %}
+    &lt;span&gt;&lt;a class="btn disabled"&gt;下一页 &amp;raquo;&lt;/a&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;a class="btn disabled"&gt;末页&lt;/a&gt;&lt;/span&gt;
+{% endif %}</code></pre></figure>
+
+<p>如果不需要这么多的翻页项，只需要删除对应的代码即可。</p>
+
+<p>下面显示一段简单的翻页代码</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;nav class="pagination" role="pagination"&gt;
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            &lt;a class="newer-posts" href="{{ site.baseurl }}" title="Previous Page"&gt;&amp;laquo; Newer Posts&lt;/a&gt;
+        {% else %}
+            &lt;a class="newer-posts" href="{{ site.baseurl }}page{{ paginator.previous_page }}/" title="Previous Page"&gt;&amp;laquo; Newer Posts&lt;/a&gt;
+      {% endif %}
+    {% endif %}
+    &lt;span class="page-number"&gt; Page {{ paginator.page }} of {{ paginator.total_pages }} &lt;/span&gt;
+    {% if paginator.next_page %}
+        &lt;a class="older-posts" href="{{ site.baseurl }}page{{ paginator.next_page }}/" title="Next Page"&gt;Older Posts &amp;raquo;&lt;/a&gt;
+    {% endif %}
+&lt;/nav&gt;</code></pre></figure>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/deployment-methods" title="部署方法">&larr; Prev</a>
+                              <a class="ct-fl"  href="/upgrading" title="升级">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/extras" title="附加功能">Next &rarr;</a>
+                              <a class="ct-fr" href="/field" title="内容字段">Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -271,7 +334,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /example; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /article; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */
