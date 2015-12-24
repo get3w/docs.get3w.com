@@ -118,46 +118,64 @@
     </a>
   </li>
 </ul>
+<h4>示例</h4>
+<ul>
+  <li>
+    <a href="{{ site.baseurl }}/article.html"{% if page.current == 'article' %} class="active"{% endif %}>
+      <span>文章列表</span>
+    </a>
+  </li>
+  <li>
+    <a href="{{ site.baseurl }}/single-article.html"{% if page.current == 'single-article' %} class="active"{% endif %}>
+      <span>调取指定栏目文章列表</span>
+    </a>
+  </li>
+  <li>
+    <a href="{{ site.baseurl }}/field.html"{% if page.current == 'field' %} class="active"{% endif %}>
+      <span>字段</span>
+    </a>
+  </li>
+</ul>
 <h4>其他</h4>
 <ul>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/github-pages.html"{% if page.current == 'github-pages' %} class="active"{% endif %}>
       <span>GitHub Pages</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/deployment-methods.html"{% if page.current == 'deployment-methods' %} class="active"{% endif %}>
       <span>部署方法</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/continuous-integration.html"{% if page.current == 'continuous-integration' %} class="active"{% endif %}>
       <span>持续集成</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/troubleshooting.html"{% if page.current == 'troubleshooting' %} class="active"{% endif %}>
       <span>常见问题</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/sites.html"{% if page.current == 'sites' %} class="active"{% endif %}>
       <span>使用 Get3w 的站点</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/resources.html"{% if page.current == 'resources' %} class="active"{% endif %}>
       <span>相关资源</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
+    <a href="{{ site.baseurl }}/upgrading.html"{% if page.current == 'upgrading' %} class="active"{% endif %}>
       <span>升级</span>
     </a>
   </li>
   <li>
-    <a href="{{ site.baseurl }}/configuration.html"{% if page.current == 'setup' %} class="active"{% endif %}>
-      <span>贡献</span>
+    <a href="{{ site.baseurl }}/example.html"{% if page.current == 'example' %} class="active"{% endif %}>
+      <span>示例</span>
     </a>
   </li>
   <li>

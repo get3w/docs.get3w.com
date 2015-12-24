@@ -11,7 +11,7 @@ markdown:         redcarpet
 # Permalinks
 permalink:        /:title
 
-exclude: ['Rakefile','.gitignore']
+exclude: ['Rakefile','.gitignore','.gitignore']
 
 # # PAGINATION
 # gems: [jekyll-paginate]
@@ -20,6 +20,6 @@ exclude: ['Rakefile','.gitignore']
 branches:
   only:
     - gh-pages
-    
+
 repository: https://github.com/get3w/get3w
 help_url: https://github.com/get3w/get3w-help

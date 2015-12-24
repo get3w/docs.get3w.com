@@ -71,7 +71,7 @@ get3w 会遍历你的网站搜寻要处理的文件。任何有 [YAML 头信息]
       <td><p><code>site.time</code></p></td>
       <td><p>
 
-        当前时间（运行<code>jekyll</code>这个命令的时间点）。
+        当前时间（运行<code>www</code>这个命令的时间点）。
 
       </p></td>
     </tr>
@@ -97,7 +97,7 @@ get3w 会遍历你的网站搜寻要处理的文件。任何有 [YAML 头信息]
 
         如果当前被处理的页面是一个 Post，这个变量就会包含最多10个相关的 Post。默认的情况下，
         相关性是低质量的，但是能被很快的计算出来。如果你需要高相关性，就要消耗更多的时间来计算。
-        用<code>jekyll</code> 这个命令带上 <code>--lsi</code> (latent semantic
+        用<code>get3w</code> 这个命令带上 <code>--lsi</code> (latent semantic
         indexing) 选项来计算高相关性的 Post。
 
       </p></td>
@@ -106,7 +106,7 @@ get3w 会遍历你的网站搜寻要处理的文件。任何有 [YAML 头信息]
       <td><p><code>site.static_files</code></p></td>
       <td><p>
 
-        <a href="/docs/static-files/">静态文件</a>的列表 (此外的文件不会被 get3w 和 Liquid 处理。)。每个文件都具有三个属性： <code>path</code>，  <code>modified_time</code> 以及 <code>extname</code>。
+        <a href="/static-files/">静态文件</a>的列表 (此外的文件不会被 www 和 Liquid 处理。)。每个文件都具有三个属性： <code>path</code>，  <code>modified_time</code> 以及 <code>extname</code>。
 
       </p></td>
     </tr>
@@ -266,7 +266,7 @@ get3w 会遍历你的网站搜寻要处理的文件。任何有 [YAML 头信息]
       <td><p>
 
         Post 或者 Page 的源文件地址。举例来说，一个页面在 GitHub 上的源文件地址。
-        这可以在 <a href="../frontmatter/">YAML 头文件信息</a> 中被改写。
+        这可以在 <a href="/frontmatter/">YAML 头文件信息</a> 中被改写。
 
       </p></td>
     </tr>

@@ -85,18 +85,12 @@ collections:
 
 例如，你有一个`_my_collection/some_subdir/some_doc.md`文件，它将写入到`<dest>/awesome/some_subdir/some_doc/index.html`路径下。
 
-<div class="note info">
-  <h5></h5>
-  <p>
-
-  </p>
-</div>
 <div class="ct-alert ct-my-lg ct-left --info">
   <div class="inner">
     <i class="fa fa-sort-alpha-desc ct-color-yellow-a200"></i>
     <div class="content">
     <span class="ct-h6">不要忘记添加 YAML 头</span><br>
-    没有头信息的文件将被视为<a href="{{ site.baseurl }}/static-files">静态文件</a>，它们仅会被简单拷贝到目的路径下，而不会被处理。
+    没有头信息的文件将被视为<a href="{{ site.baseurl }}/static-files" class="ct-color-yellow-a200">静态文件</a>，它们仅会被简单拷贝到目的路径下，而不会被处理。
     </div>
   </div>
 </div>

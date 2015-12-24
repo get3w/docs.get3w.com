@@ -13,6 +13,6 @@ Get3W 是用Go语言进行开发，不依赖任何环境。您只需要一条命
 
 安装Get3W是件很轻松的事情，确保您已经安装好Homebrew的前提下，只需要一条命令即可轻松安装。
 
-{% highlight %}
-$ brew install hugo
+{% highlight bash %}
+$ brew install get3w
 {% endhighlight %}

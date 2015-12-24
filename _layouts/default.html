@@ -38,6 +38,18 @@
                         </div>
                         <div class="docs-section">
                             {{ content }}
+                            <!-- <div class="ct-clearfix ct-mx">
+                              {% if page.previous %}
+                              <a class="ct-fl"  href="{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Prev</a>
+                              {% else %}
+                              <a class="ct-fl" href="#" disabled>&larr; Prev</a>
+                              {% endif %}
+                              {% if page.next %}
+                              <a class="ct-fr" href="{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a>
+                              {% else %}
+                              <a class="ct-fr" href="#" disabled>Next &rarr;</a>
+                              {% endif %}
+                            </div> -->
                             <br>
                             {% if page.disqus %}
                               {% include disqus.html %}

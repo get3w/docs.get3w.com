@@ -162,7 +162,7 @@ title: Blogging Like a Hacker
     <i class="fa fa-star ct-color-yellow-a200"></i>
     <div class="content">
       <span class="ct-h6">提示™: 不要重复你自己</span><br>
-      如果你不希望重复地使用常用的头信息变量，只需为它们定义<a href="../configuration/" title="Front Matter defaults">默认值</a>然后再需要的时候覆盖他们即可。这种方式对于预定义变量和自定义变量都有效。
+      如果你不希望重复地使用常用的头信息变量，只需为它们定义<a href="../configuration/" class="ct-color-yellow-a200" title="Front Matter defaults">默认值</a>然后再需要的时候覆盖他们即可。这种方式对于预定义变量和自定义变量都有效。
     </div>
   </div>
 </div>

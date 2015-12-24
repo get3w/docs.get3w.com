@@ -9,7 +9,6 @@ disqus: true
 Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的
  `_config.yml` 文件，也可以作为命令行的标记来配置。
 
-## 配置设置
 
 ### 全局配置
 
@@ -21,7 +20,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
   <thead class="ct-center">
     <tr>
       <th>设置</th>
-      <th>
+      <th class="ct-center">
         <span class="option">选项</span> 和 <span class="flag">标记</span>
       </th>
     </tr>
@@ -32,7 +31,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Site Source</strong></p>
         <p class='description'>修改 Get3W 读取文件的路径</p>
       </td>
-      <td class="align-center" style="width: 60%;">
+      <td class="ct-center" style="width: 60%;">
         <p><code class="option">source: DIR</code></p>
         <p><code class="flag">-s, --source DIR</code></p>
       </td>
@@ -42,7 +41,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Site Destination</strong></p>
         <p class='description'>修改 Get3W 写入文件的路径</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">destination: DIR</code></p>
         <p><code class="flag">-d, --destination DIR</code></p>
       </td>
@@ -52,7 +51,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Safe</strong></p>
         <p class='description'>禁用 <a href="../plugins/">自定义插件</a>。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">safe: BOOL</code></p>
         <p><code class="flag">--safe</code></p>
       </td>
@@ -62,7 +61,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Exclude</strong></p>
         <p class="description">转换时排除某些文件、文件夹</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">exclude: [DIR, FILE, ...]</code></p>
       </td>
     </tr>
@@ -73,7 +72,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
           转换时强制包含某些文件、文件夹。<code>.htaccess</code> 是个典型的例子，因为默认排除 . 开头的文件。
         </p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">include: [DIR, FILE, ...]</code></p>
       </td>
     </tr>
@@ -84,7 +83,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
           当生成站点时，保留选择的文件。对文件不是由 jekyll 生成是有用的。例如由你的构建工具生成的文件或者资源。路径是相对于 <code>destination</code> 。
         </p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">keep_files: [DIR, FILE, ...]</code></p>
       </td>
     </tr>
@@ -97,7 +96,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
             Database</a> 里边的都有效，比如 <code>America/New_York</code> 。默认值为操作系统的时区。
         </p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">timezone: TIMEZONE</code></p>
       </td>
     </tr>
@@ -110,7 +109,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
              <code>ruby -e 'puts Encoding::list.join("\n")'</code> 查看 Ruby 可用的编码。
         </p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">encoding: ENCODING</code></p>
       </td>
     </tr>
@@ -122,7 +121,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
             的默认值。
         </p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><a href="#front-matter-defaults" title="details">详细</a></p>
       </td>
     </tr>
@@ -148,7 +147,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
   <thead class="ct-center">
     <tr>
       <th>设置</th>
-      <th><span class="option">选项</span> 和 <span class="flag">标记</span></th>
+      <th class="ct-center"><span class="option">选项</span> 和 <span class="flag">标记</span></th>
     </tr>
   </thead>
   <tbody>
@@ -157,7 +156,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Regeneration</strong></p>
         <p class='description'>允许文件修改时自动重新生成网站。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="flag">-w, --watch</code></p>
       </td>
     </tr>
@@ -166,7 +165,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Configuration</strong></p>
         <p class="description">手动设置配置文件，可设置多个，且后边的配置会覆盖前边的。</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="flag">--config FILE1[,FILE2,...]</code></p>
       </td>
     </tr>
@@ -175,7 +174,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Drafts</strong></p>
         <p class="description">处理草稿</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="flag">--drafts</code></p>
       </td>
     </tr>
@@ -184,7 +183,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Future</strong></p>
         <p class="description">用将来的日期发布文章</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">future: BOOL</code></p>
         <p><code class="flag">--future</code></p>
       </td>
@@ -194,7 +193,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>LSI</strong></p>
         <p class="description">为相关文章生成索引</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">lsi: BOOL</code></p>
         <p><code class="flag">--lsi</code></p>
       </td>
@@ -204,7 +203,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Limit Posts</strong></p>
         <p class="description">限制文章的数量</p>
       </td>
-      <td class='align-center'>
+      <td class='ct-center'>
         <p><code class="option">limit_posts: NUM</code></p>
         <p><code class="flag">--limit_posts NUM</code></p>
       </td>
@@ -214,7 +213,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class="name"><strong>Force polling</strong></p>
         <p class="description">强制使用轮询。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="flag">--force_polling</code></p>
       </td>
     </tr>
@@ -223,7 +222,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class="name"><strong>Verbose output</strong></p>
         <p class="description">显示详细输出。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="flag">-V, --verbose</code></p>
       </td>
     </tr>
@@ -232,7 +231,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class="name"><strong>Silence Output</strong></p>
         <p class="description">在编译期间不显示的正常输出。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="flag">-q, --quiet</code></p>
       </td>
     </tr>
@@ -249,7 +248,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
   <thead class="ct-center">
     <tr>
       <th>设置</th>
-      <th><span class="option">选项</span> 和 <span class="flag">标记</span></th>
+      <th class="ct-center"><span class="option">选项</span> 和 <span class="flag">标记</span></th>
     </tr>
   </thead>
   <tbody>
@@ -258,7 +257,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Local Server Port</strong></p>
         <p class='description'>监听所给的端口</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">port: PORT</code></p>
         <p><code class="flag">--port PORT</code></p>
       </td>
@@ -268,7 +267,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Local Server Hostname</strong></p>
         <p class='description'>监听所给的主机名</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">host: HOSTNAME</code></p>
         <p><code class="flag">--host HOSTNAME</code></p>
       </td>
@@ -278,7 +277,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Base URL</strong></p>
         <p class='description'>网站的根路径</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">baseurl: URL</code></p>
         <p><code class="flag">--baseurl URL</code></p>
       </td>
@@ -288,7 +287,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class='name'><strong>Detach</strong></p>
         <p class='description'>从终端命令行中分离出来</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="option">detach: BOOL</code></p>
         <p><code class="flag">-B, --detach</code></p>
       </td>
@@ -298,7 +297,7 @@ Get3W允许你很轻松的设计你的网站，这很大程度上归功于灵活
         <p class="name"><strong>Skips the initial site build.</strong></p>
         <p class="description">跳过服务器启动之前，网站的初始化。</p>
       </td>
-      <td class="align-center">
+      <td class="ct-center">
         <p><code class="flag">--skip-initial-build</code></p>
       </td>
     </tr>
@@ -339,7 +338,7 @@ defaults:
 
 在这里，我们把 `values` 应用给 scope 路径里的所有文件。因为路径被设为空字符串，它将会应用到你项目里的**全部文件**。你可能不想给项目在的每个文件都设置一个布局，例如 css 文件，所以你可以在 `scope` 下指定 `type` 的值。
 
-{% highlight yaml linenos %}
+{% highlight yaml %}
 defaults:
   -
     scope:
@@ -524,7 +523,7 @@ Get3W 处理两个特别的 Redcarpet 扩展：
 
 注意你还可以这样来配置语言以支持语法高亮：
 
-{% highlight %}
+{% highlight ruby %}
 ```ruby
   ...ruby code
 ```
@@ -555,7 +554,7 @@ kramdown:
 
 如果你对创建一个自定义 Markdown 处理器感兴趣，你真的很幸运！在 `Get3W::Converters::Markdown` 的命名空间下新建一个类：
 
-{% highlight %}
+{% highlight ruby %}
 class Get3W::Converters::Markdown::MyCustomProcessor
   def initialize(config)
     require 'funky_markdown'
