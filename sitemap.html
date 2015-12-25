@@ -83,7 +83,7 @@
     </a>
   </li>
   <li>
-    <a href="http://docs.get3w.com/migrations.html" class="active">
+    <a href="http://docs.get3w.com/migrations.html">
       <span>迁移</span>
     </a>
   </li>
@@ -276,18 +276,40 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>迁移</h1>
+                            <h1>Sitemap</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. Most methods listed on this page require read access to the database from your old system to generate posts for Jekyll. Each method generates `<code>.markdown</code> posts in the <code>_posts</code> directory based on the entries in the foreign system.</p>
+                            <p>制作Sitemap页面</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;urlset</span> <span class="na">xmlns=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9"</span>
+  <span class="na">xmlns:image=</span><span class="s">"http://www.google.com/schemas/sitemap-image/1.1"</span>
+  <span class="na">xmlns:mobile=</span><span class="s">"http://www.google.com/schemas/sitemap-mobile/1.0"</span><span class="nt">&gt;</span>
+
+  {% for post in site.posts %}
+  <span class="nt">&lt;url&gt;</span>
+    <span class="nt">&lt;loc&gt;</span>{{ site.url }}{{ post.url }}<span class="nt">&lt;/loc&gt;</span>
+    <span class="nt">&lt;changefreq&gt;</span>daily<span class="nt">&lt;/changefreq&gt;</span>
+    <span class="nt">&lt;lastmod&gt;</span>{{ post.date | date_to_xmlschema }}<span class="nt">&lt;/lastmod&gt;</span>
+    <span class="nt">&lt;priority&gt;</span>0.8<span class="nt">&lt;/priority&gt;</span>
+  <span class="nt">&lt;/url&gt;</span>
+  {% endfor %}
+
+  <span class="nt">&lt;url&gt;</span>
+    <span class="nt">&lt;loc&gt;</span>{{ site.url }}<span class="nt">&lt;/loc&gt;</span>
+    <span class="nt">&lt;changefreq&gt;</span>daily<span class="nt">&lt;/changefreq&gt;</span>
+    <span class="nt">&lt;priority&gt;</span>0.5<span class="nt">&lt;/priority&gt;</span>
+  <span class="nt">&lt;/url&gt;</span>
+
+<span class="nt">&lt;/urlset&gt;</span></code></pre></figure>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/installation" title="安装">&larr; Prev</a>
+                              <a class="ct-fl"  href="/rss" title="RSS">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/setup" title="建站">Next &rarr;</a>
+                              <a class="ct-fr" href="#" disabled>Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -300,7 +322,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /migrations; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /sitemap; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

@@ -83,7 +83,7 @@
     </a>
   </li>
   <li>
-    <a href="http://docs.get3w.com/migrations.html" class="active">
+    <a href="http://docs.get3w.com/migrations.html">
       <span>迁移</span>
     </a>
   </li>
@@ -193,7 +193,7 @@
     </a>
   </li>
   <li>
-    <a href="http://docs.get3w.com/rss.html">
+    <a href="http://docs.get3w.com/rss.html" class="active">
       <span>RSS订阅页面</span>
     </a>
   </li>
@@ -276,18 +276,40 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>迁移</h1>
+                            <h1>RSS</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. Most methods listed on this page require read access to the database from your old system to generate posts for Jekyll. Each method generates `<code>.markdown</code> posts in the <code>_posts</code> directory based on the entries in the foreign system.</p>
+                            <p>制作RSS订阅页面</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;rss</span> <span class="na">version=</span><span class="s">"2.0"</span> <span class="na">xmlns:atom=</span><span class="s">"http://www.w3.org/2005/Atom"</span> <span class="na">xmlns:itunes=</span><span class="s">"http://www.itunes.com/dtds/podcast-1.0.dtd"</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">xmlns:rdf=</span><span class="s">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;channel&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{ site.title }}<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;description&gt;</span>{{ site.description }}<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;link&gt;</span>{{ site.url }}{{ site.JB.rss_path }}<span class="nt">&lt;/link&gt;</span>
+    <span class="nt">&lt;lastBuildDate&gt;</span>{{ site.time | date_to_rfc822 }}<span class="nt">&lt;/lastBuildDate&gt;</span>
+    <span class="nt">&lt;pubDate&gt;</span>{{ site.time | date_to_rfc822 }}<span class="nt">&lt;/pubDate&gt;</span>
+    <span class="nt">&lt;ttl&gt;</span>1800<span class="nt">&lt;/ttl&gt;</span>
+
+    {% for post in site.posts limit:10 %}
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[{{ post.title }}]]&gt;</span><span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;description&gt;</span>{{ post.content | xml_escape }}<span class="nt">&lt;/description&gt;</span>
+      <span class="nt">&lt;link&gt;</span>{{ site.url }}{{ post.url }}<span class="nt">&lt;/link&gt;</span>
+      <span class="nt">&lt;guid&gt;</span>{{ site.url }}{{ post.id }}<span class="nt">&lt;/guid&gt;</span>
+      <span class="nt">&lt;pubDate&gt;</span>{{ post.date | date_to_rfc822 }}<span class="nt">&lt;/pubDate&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    {% endfor %}
+  <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span></code></pre></figure>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/installation" title="安装">&larr; Prev</a>
+                              <a class="ct-fl"  href="/tags-article" title="按标签调取所有文章">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/setup" title="建站">Next &rarr;</a>
+                              <a class="ct-fr" href="/sitemap" title="Sitemap">Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -300,7 +322,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /migrations; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /rss; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */

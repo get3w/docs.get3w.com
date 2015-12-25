@@ -83,7 +83,7 @@
     </a>
   </li>
   <li>
-    <a href="http://docs.get3w.com/migrations.html" class="active">
+    <a href="http://docs.get3w.com/migrations.html">
       <span>迁移</span>
     </a>
   </li>
@@ -188,7 +188,7 @@
     </a>
   </li>
   <li>
-    <a href="http://docs.get3w.com/tags-article.html">
+    <a href="http://docs.get3w.com/tags-article.html" class="active">
       <span>按标签调取所有文章</span>
     </a>
   </li>
@@ -276,18 +276,59 @@
                                 <a href="#disqus"><i class="fa fa-pencil"></i> Suggest Edits
 </a>
                             </nav>
-                            <h1>迁移</h1>
+                            <h1>按标签调取所有文章</h1>
                             <hr>
                         </div>
                         <div class="docs-section">
-                            <p>If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. Most methods listed on this page require read access to the database from your old system to generate posts for Jekyll. Each method generates `<code>.markdown</code> posts in the <code>_posts</code> directory based on the entries in the foreign system.</p>
+                            <p>按照文章分类调取所有的文章</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{% capture site_tags %}
+  {% for tag in site.tags %}
+    {{ tag | first }}
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+{% endcapture %}
+&lt;!-- site_tags: {{ site_tags }} --&gt;
+{% assign tag_words = site_tags | split:',' | sort %}
+&lt;!-- tag_words: {{ tag_words }} --&gt;
+
+&lt;ul class="tag-box"&gt;
+  {% for item in (0..site.tags.size) %}
+  {% unless forloop.last %}
+  {% capture this_word %}
+  {{ tag_words[item] | strip_newlines }}
+  {% endcapture %}
+  &lt;li&gt;
+    &lt;a href="#{{ this_word | cgi_escape }}" rel="nofollow"&gt;{{ this_word }}
+      &lt;sup&gt;{{ site.tags[this_word].size }}&lt;/sup&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  {% endunless %}{% endfor %}
+&lt;/ul&gt;
+
+{% for item in (0..site.tags.size) %}
+  {% unless forloop.last %}
+    {% capture this_word %}
+    {{ tag_words[item] | strip_newlines }}
+    {% endcapture %}
+    &lt;h4 id="{{ this_word | cgi_escape }}"&gt;{{ this_word }}&lt;/h4&gt;
+    {% for post in site.tags[this_word] %}
+      {% if post.title != null %}
+        &lt;ul&gt;
+          &lt;li&gt;{{ post.date | date: "%Y-%m-%d" }}
+          &amp;raquo; &lt;a href="{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+{% endfor %}</code></pre></figure>
 
                             <!-- <div class="ct-clearfix ct-mx">
                               
-                              <a class="ct-fl"  href="/installation" title="安装">&larr; Prev</a>
+                              <a class="ct-fl"  href="/single-article" title="调取指定栏目文章列表">&larr; Prev</a>
                               
                               
-                              <a class="ct-fr" href="/setup" title="建站">Next &rarr;</a>
+                              <a class="ct-fr" href="/rss" title="RSS">Next &rarr;</a>
                               
                             </div> -->
                             <br>
@@ -300,7 +341,7 @@
 */
 /*
 var disqus_config = function () {
-this.page.url = /migrations; // Replace PAGE_URL with your page's canonical URL variable
+this.page.url = /tags-article; // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */
